@@ -23,8 +23,10 @@ __all__ = (
     'as_',
     'from_',
     'from_repeating',
-    'IndexedSequence',
     'ChainedSequence',
+    'Donor',
+    'IndexedSequence',
+    'SameValueDonor',
 )
 
 
