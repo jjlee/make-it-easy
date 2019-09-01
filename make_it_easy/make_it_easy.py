@@ -105,7 +105,7 @@ class Maker(Donor):
         self._lookup = lookup
 
     def make(self):
-        return self._instantiator(**self._lookup)
+        return self._instantiator(**dict(self._lookup))
 
     def with_(self, value, name):
         if not isinstance(value, Donor):
