@@ -107,6 +107,11 @@ class Maker(Donor):
     def make(self):
         return self._instantiator(**dict(self._lookup))
 
+    def mwith(self, **kwds):
+        for name, value in kwds.items():
+            self.with_(value, name)
+        return self
+
     def with_(self, value, name):
         if not isinstance(value, Donor):
             value = SameValueDonor(value)
@@ -119,6 +124,9 @@ class Maker(Donor):
         lookup.update(self._lookup)
         lookup.update(_convert_properties_to_property_lookup(*properties))
         return Maker(self._instantiator, lookup)
+
+    def mbut(self, **properties):
+        return self.but().mwith(**properties)
 
     @property
     def value(self):
